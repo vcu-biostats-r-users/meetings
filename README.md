@@ -1,7 +1,9 @@
 VCU Biostatistics R Users Group
 ========
 
-Welcome to the VCU Biostatistics Department R Users Group Website!  Please find below an updated schedule of meetings.  Also, see presentations folder for code and slides from past presentations.
+Welcome to the VCU Biostatistics Department R Users Group Website!  Please find below an updated schedule of meetings.  Also, see the presentation_code folder for code from past presentations.
 
-* **March 20th 3:30 PM**  
+### Spring 2014 Schedule
+
+* **March 20th 3:30 PM**
 
