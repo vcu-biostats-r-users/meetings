@@ -3,37 +3,44 @@ Using GitHub with RStudio
 author: Paul Manser
 date:  3/20/2014
 
-First Slide
+Git & GitHub
 ========================================================
 
-For more details on authoring R presentations click the
-**Help** button on the toolbar.
+## Git
+* Distributed revision control system
+* Allows for many authors to contribute to one project
+* Command line tool with RStudio interface  
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
+## GitHub
+* Web-based hosting service for software development
+* Uses the Git revision control system
+* Publish and maintain R code & packages
 
-Slide With Code
+Git
 ========================================================
 
+## What does Git do?
+* Stores "snapshots" of your project as you go
+* Track all changes by multiple authors
+* Can revert to older versions of project
+* Allows for multiple different branches of a project
 
-```r
-summary(cars)
-```
+## Workflow 
+* Modify code file(s)
+* Stage
+* Commit
 
-```
-     speed           dist    
- Min.   : 4.0   Min.   :  2  
- 1st Qu.:12.0   1st Qu.: 26  
- Median :15.0   Median : 36  
- Mean   :15.4   Mean   : 43  
- 3rd Qu.:19.0   3rd Qu.: 56  
- Max.   :25.0   Max.   :120  
-```
+[Try Git at Code School](http://try.github.io/levels/1/challenges/1)
 
-
-Slide With Plot
+Git & RStudio
 ========================================================
 
-![plot of chunk unnamed-chunk-2](github_presentation-figure/unnamed-chunk-2.png) 
+![plot of chunk unnamed-chunk-1](github_presentation-figure/unnamed-chunk-1.png) 
+
+
+
+
+
+
+
 
