@@ -5,5 +5,9 @@ Welcome to the VCU Biostatistics Department R Users Group Website!  Please find 
 
 ### Spring 2014 Schedule
 
-* **March 20th 3:30 PM**
+* **March 20th 3:30 PM**  
+Paul Manser: Using GitHub with RStudio
+
+* **April 3rd 3:30 PM**  
+Edmund Glass: Using the RMySQL Package
 
