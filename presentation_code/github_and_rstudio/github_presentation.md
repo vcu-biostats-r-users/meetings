@@ -15,15 +15,17 @@ Introduction
 * What is the end goal?
 * How do we write and develop code?
 * How do we share our work?  
+* How many programming classes have you actually had?
 
-Open source
+Open source software
 ========================================================
-* Source code made public and free
-* Owner maintains rights to study, change, distribute  
-* Public collaborative software development
-* Personalized versions of public software  
-* Take accountability for our own code
-* We're probably not going to get rich writing R packages
+* The Good  
+    * Source code made public and free
+    * Public collaborative software development
+    * Personalized versions of public software  
+* The bad
+    * Can' call SAS support desk
+    * We're probably not going to get rich writing R packages
 
 What are Git and GitHub?
 ========================================================
@@ -38,14 +40,15 @@ What are Git and GitHub?
 * Uses the Git revision control system
 * Publish and maintain R code & packages
 * Community of developers
+* Supports variety of languages other than R
 
 Git
 ========================================================
 
 ### What does Git do?
-* Stores "snapshots" of your project as you go
+* Stores project "snapshots"
 * What, when, why, who?
-* Can revert to older versions of project
+* Revert to older versions
 
 ### Main actions
 * Modify code file(s)
@@ -54,13 +57,17 @@ Git
 
 [Try Git at Code School](http://try.github.io/levels/1/challenges/1)
 
+***
+![alt text](git-transport.png)
+
 GitHub
 ========================================================
 
 ### What does it add on top of Git?
 * Common public repository to share code online   
     - R Users Group
-* Publish packages outside of Bioconductor/CRAN
+    - Share with potential collaborators
+    - Reproducible research
 * Another way to back up your R files
 * Programming resume
 
