@@ -1,7 +1,7 @@
 Using GitHub with RStudio
 ========================================================
 author: Paul Manser
-date:  3/20/2014
+date:  3/27/2014
 
 Introduction
 ========================================================
@@ -17,30 +17,30 @@ Introduction
 * How do we share our work?  
 * How many programming classes have you actually had?
 
-Open source software
+R is open source software
 ========================================================
 * The Good  
     * Source code made public and free
     * Public collaborative software development
     * Personalized versions of public software  
-* The bad
-    * Can' call SAS support desk
+* The Bad
+    * Can't call SAS support desk
     * We're probably not going to get rich writing R packages
 
 What are Git and GitHub?
 ========================================================
 
 ### Git
-* Revision control system
+* Revision control system (track changes in MS word)
 * Allows for many authors to contribute to one project
-* Command line tool with RStudio GUI
+* Command line tool with a RStudio GUI
 
 ### GitHub
-* Web-based hosting service for software development
+* Web-based service for open source software development
 * Uses the Git revision control system
 * Publish and maintain R code & packages
 * Community of developers
-* Supports variety of languages other than R
+* Supports a variety of languages
 
 Git
 ========================================================
@@ -76,18 +76,28 @@ GitHub
 * Pull
 * Fork
 
+The devtools package in R
+========================================================
+* One of many development packages by Hadley Wickham
+    * testthat  
+    * roxygen2  
+* Easy sourcing and package installation from GitHub
+    * ```source_gist()```
+    * ```install_github()```
 
-Putting it all together
+
+Let's try it out!
 ========================================================
 left: 80%
 ### Create a gist
 * Write a function and save as gist
-* Source using devtools package
+* Source using ```source_gist()```
 
 ### Create a GitHub repository
-* Write a cool new function
+* Create an RStudio project
+* Write a new function
 * Push to GitHub
-* Modify R script
+* Modify R function
 * Commit & push new version  
 
 ### Fork a repository
@@ -95,4 +105,7 @@ left: 80%
 ***
 
 ![alt text](octocat.png)
+
+
+
 
