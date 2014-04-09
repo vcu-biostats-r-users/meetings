@@ -15,7 +15,9 @@ ______________________________________________________
 Edmund Glass  
 RMySQL: The R interface to MySQL databases
 
-* **April 10th**  
+* **April 10th** 
+Paul Manser
+Interactive 3D Graphics with rgl
 
 * **April 17th**  
 Kyle Ferber  
@@ -28,7 +30,8 @@ Sweave for creating latex documents in R
 ______________________________________________________
 
 * **May 1st**  
-
+Kabita Joshi  
+Using rjags and plyr
 
 * **May 8th**  
 Le Kang  
