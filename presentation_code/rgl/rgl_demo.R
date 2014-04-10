@@ -44,9 +44,9 @@ data(iris)
 pc.scores <- prcomp(iris[, (-5)])$x[, 1:3] # get first 3 PC scores
 
 # plot first 3 PCs colored by species
-plot3d(x = pc.scores[, 1],
-       y = pc.scores[, 2],
-       z = pc.scores[, 3],
+plot3d(x = pc.scores[, 1], xlab = 'PC1',
+       y = pc.scores[, 2], ylab = 'PC2',
+       z = pc.scores[, 3], zlab = 'PC3',
        col = as.numeric(iris$Species))
 axes3d()
 
@@ -122,4 +122,20 @@ M <- par3d("userMatrix")
 play3d( par3dinterp( 
   userMatrix=list(M, rotate3d(M, pi/2, 1, 0, 0), rotate3d(M, pi/2, 0, 1, 0) ) ), 
   duration=4 )
+
+
+# create surface plot using lattice ---------------------------------------
+# install.package('lattice')
+library(lattice)
+
+x11()
+wireframe(c(pred.loess) ~ predict.df$x * predict.df$z,
+          xlab = "X",
+          ylab = "Z",
+          zlab = 'Y',
+          main = "Surface Fit",
+          drape = TRUE,
+          colorkey = TRUE,
+          screen = list(z = -60, x = -60),
+          scale = list(arrows = FALSE))
 
