@@ -26,9 +26,9 @@ loop.df <- data.frame(x = seq(0, 3.5, length.out = 100) + rnorm(100)/a,
 r.df <- rbind(back.df, leg.df, loop.df)
 
 # plot 3d specifying x, y, and z coords
-plot3d(x = r.df$x,
-       y = r.df$y,
-       z = r.df$z,
+plot3d(x = r.df$x, xlab = '',
+       y = r.df$y, ylab = '',
+       z = r.df$z, zlab = '',
        col = r.df$section)
 
 # take a snapshot and save (snapshot has some problems in Windows 7)
