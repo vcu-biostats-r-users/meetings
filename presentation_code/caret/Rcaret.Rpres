@@ -1,0 +1,218 @@
+The Many Uses of library(caret)
+========================================================
+author: Kyle Ferber 
+date: April 22, 2014
+
+Functionality
+========================================================
+
+The caret package contains useful functions for:
+
+- Pre-processing
+- Data Splitting
+- Producing Figures
+- Build Classifiers
+
+Pre-processing
+========================================================
+
+The caret program allows the user to easily identify:
+
+- Zero and Near Zero-Variance Predictors
+
+Zero and Near Zero-Variance Predictors
+========================================================
+
+### Zero-Variance Predictors 
+  - Predictors with only one value  
+  - e.g. all Caucasian subjects 
+  
+  
+### Near Zero-Variance Predictors 
+  - Predictors with only a few values and a higly skewed distribution 
+  - (e.g. 300 Caucasians, 2 African Americans) 
+  
+  
+Both types can cause a model to become highly unstable.
+
+
+The nearZeroVar() function
+========================================================
+
+<small>
+```{r}
+library(caret)
+tmpMat<-matrix(c(1:25,rep(1,24),0,rep(0,25)), ncol=3)
+tail(tmpMat)
+```
+</small>
+
+
+The nearZeroVar() function
+========================================================
+```{r}
+nearZeroVar(tmpMat, saveMetrics = TRUE)
+```
+
+Finding Linear Dependencies
+========================================================
+
+```{r}
+library(caret)
+lt.full.rank <- matrix(0, nrow = 6, ncol = 6)
+lt.full.rank[, 1] <- c(1, 1, 1, 1, 1, 1)
+lt.full.rank[, 2] <- c(1, 1, 1, 0, 0, 0)
+lt.full.rank[, 3] <- c(0, 0, 0, 1, 1, 1)
+lt.full.rank[, 4] <- c(1, 0, 0, 1, 0, 0)
+lt.full.rank[, 5] <- c(0, 1, 0, 0, 1, 0)
+lt.full.rank[, 6] <- c(0, 0, 1, 0, 0, 1)
+```
+
+
+Finding Linear Dependencies
+========================================================
+
+```{r,echo=FALSE}
+library(caret)
+lt.full.rank <- matrix(0, nrow = 6, ncol = 6)
+lt.full.rank[, 1] <- c(1, 1, 1, 1, 1, 1)
+lt.full.rank[, 2] <- c(1, 1, 1, 0, 0, 0)
+lt.full.rank[, 3] <- c(0, 0, 0, 1, 1, 1)
+lt.full.rank[, 4] <- c(1, 0, 0, 1, 0, 0)
+lt.full.rank[, 5] <- c(0, 1, 0, 0, 1, 0)
+lt.full.rank[, 6] <- c(0, 0, 1, 0, 0, 1)
+
+findLinearCombos(lt.full.rank)
+```
+
+Other Pre-Processing Tools
+========================================================
+- Centering and Scaling
+
+- PCA
+
+- Imputation
+
+Data Splitting
+========================================================
+### Partitioning data into a training and testing set
+```{r}
+library(caret)
+data(CO2)
+y<-CO2$uptake
+sub.train <- createDataPartition(y, p=2/3, times=1)[[1]] #returns a list
+y.train<-y[sub.train]
+y.test<-y[-sub.train]
+#X.train<-X[sub.train,]
+#X.test<-X[-sub.train,]
+```
+
+### Bootstrapping
+```{r}
+bootstrap.samples<-createResample(y, times=1000)
+```
+
+Visualizations
+========================================================
+### featurePlot()
+
+- This one function can produce a range of useful plots such as:
+
+  - Scatterplot matrix (plot="pair")
+  - Density Plot (plot="density")
+  - Boxplot (plot="box")
+
+Scatterplot Matrix
+========================================================
+<large>
+```{r,eval=FALSE}
+library(caret)
+data(iris)
+featurePlot(x=iris[,1:3], plot="pairs")
+```
+</large>
+
+Scatterplot Matrix
+========================================================
+<large>
+```{r,echo=FALSE}
+library(caret)
+data(iris)
+featurePlot(x=iris[,1:3], plot="pairs")
+```
+</large>
+
+Density Plot
+========================================================
+<large>
+```{r,eval=FALSE}
+library(caret)
+data(iris)
+featurePlot(x = iris[, 1:3],
+                  y = iris$Species,
+                  plot = "density",
+                  scales = list(x = list(relation="free")),
+                  layout = c(3, 1))
+```
+</large>
+
+Density Plot
+========================================================
+<large>
+```{r,echo=FALSE}
+library(caret)
+data(iris)
+featurePlot(x = iris[, 1:3],
+                  y = iris$Species,
+                  plot = "density",
+                  scales = list(x = list(relation="free")),
+                  layout = c(3, 1))
+```
+</large>
+
+Box Plot
+========================================================
+```{r,eval=FALSE}
+library(caret)
+data(iris)
+featurePlot(x = iris[, 1:3],
+                  y = iris$Species,
+                  plot = "box",
+                  scales = list(x = list(relation="free")),
+                  layout = c(3, 1))
+```
+Box Plot
+========================================================
+```{r,echo=FALSE}
+library(caret)
+data(iris)
+featurePlot(x = iris[, 1:3],
+                  y = iris$Species,
+                  plot = "box",
+                  scales = list(x = list(relation="free")),
+                  layout = c(3, 1))
+```
+Scatter Plot of Predictor by Response
+========================================================
+```{r,eval=FALSE}
+library(caret)
+data(USArrests)
+featurePlot(x = USArrests[, c(1:2)], #Murder, assault
+                  y = USArrests[,4], #Rapes
+                  plot = "scatter",
+                  type = c("p", "smooth"),
+                  span = .8,
+                  layout = c(2, 1))
+```
+Scatter Plot of Predictor by Response
+========================================================
+```{r,echo=FALSE}
+library(caret)
+data(USArrests)
+featurePlot(x = USArrests[, c(1:2)], #Murder, assault
+                  y = USArrests[,4], #Rapes
+                  plot = "scatter",
+                  type = c("p", "smooth"),
+                  span = .8,
+                  layout = c(2, 1))
+```
