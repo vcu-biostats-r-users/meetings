@@ -35,4 +35,4 @@ Using rjags and plyr
 
 * **May 8th**  
 Le Kang  
-Parallel computing in R
+Computing skills in R
