@@ -1,0 +1,13 @@
+\documentclass{book}
+
+\begin{document}
+%\SweaveOpts{concordance=TRUE}
+
+\chapter{Introduction}
+This is my introductory chapter of the thesis. 
+
+\chapter{Problem}
+\SweaveInput{chap1.Rnw}
+
+
+\end{document}

@@ -1,0 +1,32 @@
+% !Rnw root=Thesis.Rnw
+
+\section{Data description}
+
+Let's make some summary analysis of the data. 
+
+
+<<analysis1, results=tex, echo=FALSE>>=
+library(xlsx)
+library(xtable)
+library(patchDVI)
+gigu <- read.xlsx("Toxicity.xlsx",1, header=TRUE, 
+rowIndex=1:246, colIndex=1:15)
+
+gigu$rectal.tox <- !is.na(gigu$Rectal.Toxicity...Grade.2..days.)
+gigu$urinary.tox <- !is.na(gigu$Urinary.Toxicity...Grade.2..days.)
+
+lrfit <-summary(glm(rectal.tox ~ Implant.Source, data=gigu, family='binomial'))$coefficients
+
+print(xtable(lrfit,digits=3,
+caption="Logistic regression for association of rectal toxicity with implant source."),
+table.placement="!ht", caption.placement="bottom")
+
+lrfit <-summary(glm(urinary.tox ~ Implant.Source, data=gigu, family='binomial'))$coefficients
+
+print(xtable(lrfit,digits=3,
+caption="Logistic regression for association of urinary toxicity with implant source."),
+table.placement="!ht", caption.placement="bottom")
+
+
+@
+

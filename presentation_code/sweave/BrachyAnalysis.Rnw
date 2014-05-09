@@ -1,0 +1,121 @@
+\documentclass[a4paper]{article}
+\textheight=8in  % text height can be bigger for a longer letter
+\oddsidemargin=0pt % leftmargin is 1 inch
+\textwidth=6.5in   
+%\setlength{\topmargin}{-2.0 cm}
+%\setlength{\textwidth}{13cm}
+%\setlength{\textheight}{9.5 in}
+%\SweaveOpts{prefix.string=figs/plot, png=TRUE}
+
+\title{Statistical analysis of toxicity rates.}
+
+\author{Nitai Mukhopadhyay, Biostatistics VCU}
+\begin{document}
+\maketitle
+\tableofcontents
+
+ All analysis was done using the statistical 
+computing software R v3.0.2 .  The binary variables were tested for 
+association with presence or absence of rectal or urinary toxicity using logistic
+regression.  The last column of each table has the p values.  The intercept p value 
+is not important.  It is the covariate specific p value that shows if the covariate is 
+significantly associated or not depending on the p value being smaller than 0.05 or not. 
+The continuous variables are tested using linear regression and the tables are to be 
+interpreted in the similar manner. 
+
+
+<<echo=FALSE, results=hide>>=
+# chunk 1
+library(MASS)
+library(survival)
+#library(Hmisc)
+library(xtable)
+library(xlsx)
+library(cacheSweave)
+options(warn=-1)
+
+gigu <- read.xlsx("Toxicity.xlsx",1, header=TRUE, 
+rowIndex=1:246, colIndex=1:15)
+
+gigu$rectal.tox <- !is.na(gigu$Rectal.Toxicity...Grade.2..days.)
+gigu$urinary.tox <- !is.na(gigu$Urinary.Toxicity...Grade.2..days.)
+
+
+###########  data restructuring ########################
+@
+\section{ Association with implant source  }
+
+<<echo=FALSE, results=tex>>=
+#cache=TRUE
+#chunk 2
+
+#Sys.sleep(10)
+lrfit <-summary(glm(rectal.tox ~ Implant.Source, data=gigu, family='binomial'))$coefficients
+
+print(xtable(lrfit,digits=3,
+caption="Logistic regression for association of rectal toxicity with implant source."),
+table.placement="!ht", caption.placement="bottom")
+
+lrfit <-summary(glm(urinary.tox ~ Implant.Source, data=gigu, family='binomial'))$coefficients
+
+print(xtable(lrfit,digits=3,
+caption="Logistic regression for association of urinary toxicity with implant source."),
+table.placement="!ht", caption.placement="bottom")
+
+@
+\clearpage
+
+\begin{figure}[!h]
+\begin{center}
+<< fig=TRUE, echo=FALSE >>=
+# chunk 3
+boxplot(gigu$Prostate.Volume..cc~gigu$urinary.tox, notch=TRUE, col='green', ylab="Prostate volume" )
+mtext("Urinary toxicity",side=1, line=2)
+@
+
+\end{center}
+\caption{Model predicted probability of no tumor and number of tumors for all mice types. }
+\label{fig:cisecblvol}
+\end{figure}
+
+\clearpage
+
+
+
+\end{document}
+
+% # Sweave("BrachyAnalysis.Rnw")
+% # system("pdflatex BrachyAnalysis.tex")
+%#Sweave("BrachyAnalysis.Rnw", driver=cacheSweaveDriver)
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
